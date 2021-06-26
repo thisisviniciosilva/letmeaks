@@ -13,7 +13,9 @@ import { useAuth } from "../hooks/useAuth";
 
 export function NewRoom() {
   const history = useHistory();
+
   const { user } = useAuth();
+
   const [newRoom, setNewRoom] = useState("");
 
   async function handleCreateRoom(event: FormEvent) {

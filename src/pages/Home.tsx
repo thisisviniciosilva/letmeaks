@@ -13,8 +13,9 @@ import googleIconImg from "../assets/images/google-icon.svg";
 
 export function Home() {
   const history = useHistory();
-  const [roomCode, setRoomCode] = useState("");
+
   const { user, signInWithGoogle } = useAuth();
+  const [roomCode, setRoomCode] = useState("");
 
   async function handleCreateRoom() {
     if (!user) {
@@ -35,6 +36,11 @@ export function Home() {
 
     if (!roomRef.exists()) {
       alert("Room does not exists.");
+      return;
+    }
+
+    if (roomRef.val().endedAt) {
+      alert("Room already closed.");
       return;
     }
 
